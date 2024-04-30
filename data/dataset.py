@@ -66,8 +66,9 @@ class MIVRecurrentDataset(data.Dataset):
 
         img_gts = torch.stack(img2tensor(img_gts), dim=0)
         list_lqs = [torch.stack(img2tensor(img_lqs), dim=0) for img_lqs in list_lqs]
+        list_lqs =  torch.stack(list_lqs, 0)
 
-        return {'lqs': img_lqs, 'gt': img_gts, 'key': key}
+        return {'lqs': list_lqs, 'gt': img_gts, 'key': key}
 
     def __len__(self):
         return len(self.keys)

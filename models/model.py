@@ -61,7 +61,7 @@ class Model(BaseModel):
 # optimize parameters
     def optimize_parameters(self, current_step):
         self.optimizer_g.zero_grad()
-        self.output = self.net_g(self.lq1, self.lq2, self.lq3)
+        self.output = self.net_g(self.lqs)
         l_total = 0
         l_pix = self.cri_pix(self.output, self.gt)
         print(l_pix)
